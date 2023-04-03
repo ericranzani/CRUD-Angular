@@ -1,0 +1,27 @@
+<!--Elemento que forma o formulário dos campos-->
+<h1 *ngIf="!isChange" mat-dialog-title>Create Element</h1>
+<h1 *ngIf="isChange" mat-dialog-title>Edit Element</h1>
+<div mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Position</mat-label>
+        <input matInput [(ngModel)]="data.position">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Nome</mat-label>
+        <input matInput [(ngModel)]="data.nome">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Sobrenome</mat-label>
+        <input matInput [(ngModel)]="data.sobrenome">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>E-mail</mat-label>
+        <input matInput [(ngModel)]="data.email" ngModel email="true">
+    </mat-form-field>
+</div>
+<!--botões de criar/alterar ou cancelar -->
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button *ngIf="!isChange" [mat-dialog-close]="data" cdkFocusInitial>Create</button>
+  <button mat-button *ngIf="isChange" [mat-dialog-close]="data" cdkFocusInitial>Edit</button>
+</div>
